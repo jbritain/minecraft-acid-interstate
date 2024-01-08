@@ -158,6 +158,9 @@ float doPortal(in float transitionStartX, in float transitionEndX, inout vec3 po
 
 float doPortals(inout vec3 position, in vec3 worldSpacePosition, in vec3 cameraPosition, in vec3 blockCentre){
   float nearestPortalDistance = 1;
+  nearestPortalDistance = min(doPortal(1216, 1472, position, worldSpacePosition, 1344.5, blockCentre, cameraPosition), nearestPortalDistance);
+  nearestPortalDistance = min(doPortal(2384, 2640, position, worldSpacePosition, 2512.5, blockCentre, cameraPosition), nearestPortalDistance);
+  nearestPortalDistance = min(doPortal(3608, 3864, position, worldSpacePosition, 3737, blockCentre, cameraPosition), nearestPortalDistance);
 
   return nearestPortalDistance;
 }
