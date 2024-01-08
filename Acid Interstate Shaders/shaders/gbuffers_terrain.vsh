@@ -1,8 +1,17 @@
 #version 120
 
+#define VSH
+
 #define composite2
 #define gbuffers_terrain
 #include "shaders.settings"
+#include "/acid/acid.glsl"
+#include "/acid/portals.glsl"
+
+out vec3 originalPosition;
+out vec3 originalWorldSpacePosition;
+out vec3 originalBlockCentre;
+out vec3 newPosition;
 
 //Moving entities IDs
 //See block.properties for mapped ids
@@ -22,11 +31,13 @@
 #define ENTITY_INVERTED_LOWER 10177.0	//hanging_roots
 #define ENTITY_NON_DIFFUSED 20000.0
 
+
 varying vec4 color;
 varying vec4 texcoord;
 
 varying vec4 normal;
 varying vec3 worldpos;
+attribute vec3 at_midBlock;
 
 attribute vec4 mc_Entity;
 attribute vec4 mc_midTexCoord;
@@ -90,8 +101,21 @@ void main() {
 	texcoord.zw = gl_MultiTexCoord1.xy/255.0;
 
 	vec4 position = gbufferModelViewInverse * gl_ModelViewMatrix * gl_Vertex;
-		 worldpos = position.xyz + cameraPosition;
+	worldpos = position.xyz + cameraPosition;
+
+	originalPosition = position.xyz;
+	originalWorldSpacePosition = worldpos.xyz;
+	originalBlockCentre = worldpos.xyz + (at_midBlock / 64);
+	
+	doPortals(position.xyz, worldpos.xyz, cameraPosition.xyz, worldpos.xyz + (at_midBlock / 64));
+	newPosition = position.xyz;
+	doAcid(position.xyz, cameraPosition);
+	
+
 	bool istopv = gl_MultiTexCoord0.t < mc_midTexCoord.t;
+
+	//position.x += 1;
+
 	/*
 	bool entities = (mc_Entity.x == ENTITY_VINES || mc_Entity.x == ENTITY_SMALLENTS || mc_Entity.x == 10030.0 || mc_Entity.x == 10031.0 || mc_Entity.x == 10115.0 || mc_Entity.x == ENTITY_LILYPAD 
 					|| mc_Entity.x == ENTITY_LAVA || mc_Entity.x == ENTITY_LEAVES || mc_Entity.x == ENTITY_SMALLGRASS || mc_Entity.x == ENTITY_UPPERGRASS || mc_Entity.x == ENTITY_LOWERGRASS);
@@ -249,6 +273,8 @@ if (istopv) {
 	}
 
 	if(mc_Entity.x == 10300.0) color = vec4(1.0); //fix lecterns
+	
+	
 
 	gl_Position = gl_ProjectionMatrix * gbufferModelView * position;
 #ifdef TAA

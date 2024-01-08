@@ -1,8 +1,15 @@
 #version 120
 /* DRAWBUFFERS:01 */
 
+#define FSH
+
 #define gbuffers_terrain
 #include "shaders.settings"
+
+in vec3 newPosition;
+in vec3 originalPosition;
+in vec3 originalWorldSpacePosition;
+in vec3 originalBlockCentre;
 
 /* Don't remove me
 const int colortex0Format = RGBA16;
@@ -21,6 +28,13 @@ varying vec4 normal;
 varying vec3 worldpos;
 varying vec3 viewVector;
 varying mat3 tbnMatrix;
+
+uniform vec3 cameraPosition;
+uniform mat4 gbufferModelView;
+
+
+#include "/acid/portals.glsl"
+
 
 uniform sampler2D texture;
 //uniform sampler2D specular;
@@ -104,6 +118,9 @@ vec3 calcParallax(vec3 pos){
 #endif
 
 void main() {
+	// because the function can modify the position we have to pass in a variable which can be modified
+	vec3 newPos = newPosition;
+	doPortals(newPos, originalWorldSpacePosition, cameraPosition, originalBlockCentre);
 
 	vec4 albedo = texture2D(texture, texcoord.xy)*color;
 	#if nMap >= 1
@@ -132,6 +149,7 @@ void main() {
 	bool pattern = (mod(gl_FragCoord.x,2.0)==mod(gl_FragCoord.y,2.0));
 	cAlbedo.g = (pattern)?cAlbedo.b: cAlbedo.g;
 	cAlbedo.b = normal.a;
+	
 
 	gl_FragData[0] = cAlbedo;
 	gl_FragData[1] = encode(newnormal.xyz);

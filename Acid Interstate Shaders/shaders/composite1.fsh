@@ -7,6 +7,7 @@ const bool gaux1MipmapEnabled = true;
 #define composite1
 #define lightingColors
 #include "shaders.settings"
+#include "/acid/portals.glsl"
 
 //custom uniforms defined in shaders.properties
 uniform float inSwamp;
@@ -52,7 +53,6 @@ uniform sampler2D gaux4;
 uniform vec3 cameraPosition;
 uniform vec3 sunPosition;
 
-uniform mat4 gbufferProjection;
 uniform mat4 gbufferProjectionInverse;
 uniform mat4 gbufferModelViewInverse;
 
@@ -111,7 +111,9 @@ float calcFog(vec3 fposition) {
 	float morning = clamp((worldTime-0.1)/300.0,0.0,1.0)-clamp((worldTime-23150.0)/200.0,0.0,1.0);
 	density *= (0.1+0.9*morning);
 #endif
-	vec3 worldpos = (gbufferModelViewInverse*vec4(fposition,1.0)).rgb+cameraPosition;
+	
+	vec3 worldpos = (gbufferModelViewInverse*vec4(fposition,1.0)).rgb;+cameraPosition;
+	
 	float height = mix(getAirDensity (worldpos.y),6.,rainStrength);
 	float d = length(fposition);
 
@@ -624,34 +626,46 @@ if (texture2D(colortex2, texcoord).z < 0.2499 && dot(texture2D(colortex2,texcoor
 
 bool island = !(dot(texture2D(colortex0,texcoord).rgb,vec3(1.0))<0.00000000001 || (depth1 > comp)); //must be depth1 > comp for transparency
 
-if (!island){ //breaks transparency rendering against the sky
-vec3 cpos = normalize(gbufferModelViewInverse*fragpos1).xyz;
-#ifdef defskybox
-	c = mix(c.rgb, hr.rgb, skyboxblendfactor);	//blend skytexture with shader skycolor
-#else
-	c = hr.rgb;
-#endif
-#ifdef customStars
-	c += calcStars(cpos)*moonVisibility;
-#endif
-#if Clouds == 2 || Clouds == 4
-	c = drawCloud(normalfragpos1.xyz, c);
-#endif
-#ifndef defskybox
-	c = drawSun(fragpos1.xyz, c, 1.0);
-	c = drawMoon(fragpos1.xyz, c, 1.0);
-#endif
-#if Clouds == 3 || Clouds == 4
-float cheight = (cloud_height-32.0);
-if (dot(fragpos1.xyz, upVec) > 0.0 || cameraPosition.y > cheight)c = renderClouds(cpos, c, cloudsIT);
-#endif
-}/*--------------------------------------*/
 
-	//Draw fog
-	vec3 fogC = hr.rgb*(0.7+0.3*tmult)*(1.33-rainStrength*0.67);
-	float fogF = calcFog(fragpos0.xyz);
-	vec3 foglandC = fogC;
-		 foglandC.b *= (1.5-0.5*rainStrength);
+vec3 cpos = normalize(gbufferModelViewInverse*fragpos1).xyz;
+vec3 real_sky_c = c;
+#ifdef defskybox
+	real_sky_c = mix(c.rgb, hr.rgb, skyboxblendfactor);	//blend skytexture with shader skycolor
+#else
+	real_sky_c = hr.rgb;
+#endif
+float depth = texture(depthtex0, texcoord).r;
+if (depth == 1.0) {
+	#ifdef customStars
+		real_sky_c += calcStars(cpos)*moonVisibility;
+	#endif
+	#if Clouds == 2 || Clouds == 4
+		real_sky_c = drawCloud(normalfragpos1.xyz, real_sky_c);
+	#endif
+
+	#ifndef defskybox
+
+		real_sky_c = drawSun(fragpos1.xyz, real_sky_c, 1.0);
+		real_sky_c = drawMoon(fragpos1.xyz, real_sky_c, 1.0);
+
+		
+	#endif
+	#if Clouds == 3 || Clouds == 4
+	float cheight = (cloud_height-32.0);
+
+	if ((dot(fragpos1.xyz, upVec) > 0.0 || cameraPosition.y > cheight))real_sky_c = renderClouds(cpos, real_sky_c, cloudsIT);
+	#endif
+}
+
+//Draw fog
+vec3 fogC = hr.rgb*(0.7+0.3*tmult)*(1.33-rainStrength*0.67);
+float fogF = calcFog(fragpos0.xyz);
+vec3 foglandC = fogC;
+		foglandC.b *= (1.5-0.5*rainStrength);
+
+/*--------------------------------------*/
+
+	
 	/*----------------------------------------------------------------*/
 
 //Render before transparency
@@ -909,8 +923,21 @@ c += texture2D(composite,texcoord.xy*0.5+0.5+1.0/vec2(viewWidth,viewHeight)).rgb
 		 ufogC *= (1.0-0.85*night);
 	
 	#ifdef Underwater_Fog
-	if (isEyeInWater == 1.0) c = mix(c, ufogC, 1.0-exp(-length(fragpos0.xyz)/uFogDensity));
+		if (isEyeInWater == 1.0) c = mix(c, ufogC, 1.0-exp(-length(fragpos0.xyz)/uFogDensity));
 	#endif
+
+	if (!island){ //breaks transparency rendering against the sky
+	c = real_sky_c;
+} else {
+		// custom fog based on distance to nearest portal
+	vec3 uselessvec; // useless
+	float targetRenderDistance = 8 + 8 * doPortals(uselessvec, vec3(0.0), cameraPosition, vec3(0.0));
+	float fogDistance = pow(length(fragpos0.xz) / (targetRenderDistance * 16), 2.0);
+	
+	if (depth != 1.0){
+		c = mix(c, real_sky_c, clamp(fogDistance, 0.0, 1.0));
+	}
+}
 	
 	if (isEyeInWater == 2.0) c = mix(c, vec3(1.0, 0.0125, 0.0), 1.0-exp(-length(fragpos0.xyz))); //lava fog
 	if(blindness > 0.9) c = mix(c, vec3(0.0), 1.0-exp(-length(fragpos1.xyz)*1.125));	//blindness fog

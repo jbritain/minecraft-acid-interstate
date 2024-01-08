@@ -3,6 +3,20 @@
 #define gbuffers_shadows
 #include "shaders.settings"
 
+#define FSH
+#define shadow_FSH
+
+
+varying vec3 worldpos;
+uniform vec3 cameraPosition;
+uniform mat4 gbufferModelView;
+uniform mat4 shadowModelView;
+#include "/acid/portals.glsl"
+in vec3 originalPosition;
+in vec3 originalWorldSpacePosition;
+in vec3 originalBlockCentre;
+in vec3 newPosition;
+
 #ifdef Shadows
 varying vec4 texcoord;
 uniform sampler2D texture;
@@ -11,6 +25,8 @@ uniform int entityId;
 #endif
 
 void main() {
+	vec3 newPos = newPosition;
+	doPortals(newPos, originalWorldSpacePosition, cameraPosition, originalBlockCentre);
 
 #ifdef Shadows
 	vec4 color = texture2D(texture, texcoord.xy);
@@ -20,7 +36,6 @@ void main() {
 	#if MC_VERSION < 11601									//blockEntityId broken in 1.16.1, causes shadow issue, used to remove beam shadows, 10089 is the id of all emissive blocks but only beam is a block entity
 	if(blockEntityId == 10089.0) color *= 0.0;
 	#endif
-	gl_FragData[0] = color;
 #else
 	gl_FragData[0] = vec4(0.0);
 #endif	

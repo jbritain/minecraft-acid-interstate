@@ -4,6 +4,7 @@
 #define gbuffers_shadows
 #define gbuffers_texturedblock
 #include "shaders.settings"
+#include "acid/acid.glsl"
 
 varying vec4 color;
 varying vec2 texcoord;
@@ -17,6 +18,7 @@ uniform mat4 gbufferModelViewInverse;
 uniform mat4 shadowProjection;
 uniform mat4 shadowModelView;
 uniform sampler2DShadow shadowtex0;
+uniform vec3 cameraPosition;
 
 vec3 toScreenSpace(vec3 pos) {
 	vec4 iProjDiag = vec4(gbufferProjectionInverse[0].x, gbufferProjectionInverse[1].y, gbufferProjectionInverse[2].zw);
@@ -58,6 +60,10 @@ if (diffuse > 0.0 && rainStrength < 0.9 && albedo.a > 0.01){
 	vec3 worldposition = mat3(gbufferModelViewInverse) * fragposition.xyz + gbufferModelViewInverse[3].xyz;
 		 worldposition = mat3(shadowModelView) * worldposition.xyz + shadowModelView[3].xyz;
 		 worldposition = diagonal3(shadowProjection) * worldposition.xyz + shadowProjection[3].xyz;
+
+	vec3 localPosition = worldposition - cameraPosition.xyz;
+	doAcid(localPosition, cameraPosition);
+	worldposition = localPosition + cameraPosition.xyz;
 	
 	float distortion = calcDistortion(worldposition.xy);
 	float threshMul = max(2048.0/shadowMapResolution*shadowDistance/128.0,1.5); //increased offset to fix self shadowing on armor

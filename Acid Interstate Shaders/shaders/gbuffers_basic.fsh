@@ -25,6 +25,7 @@ bool pattern = (mod(gl_FragCoord.x,2.0)==mod(gl_FragCoord.y,2.0));
 cAlbedo.g = (pattern)?cAlbedo.b: cAlbedo.g;
 cAlbedo.b = 1.0;
 
+
 	gl_FragData[0] = cAlbedo;
 	gl_FragData[1] = encode(normal.xyz);	
 }

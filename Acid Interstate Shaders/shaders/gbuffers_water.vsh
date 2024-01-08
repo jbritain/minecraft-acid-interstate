@@ -1,10 +1,20 @@
 #version 120
 
+#define VSH
+
 #define composite2
 #define gbuffers_shadows
 #define gbuffers_water
 #define lightingColors
 #include "shaders.settings"
+#include "/acid/acid.glsl"
+#include "/acid/portals.glsl"
+
+out vec3 originalPosition;
+out vec3 originalWorldSpacePosition;
+out vec3 originalBlockCentre;
+out vec3 newPosition;
+attribute vec3 at_midBlock;
 
 varying vec4 color;
 varying vec4 ambientNdotL;
@@ -79,6 +89,14 @@ void main() {
 	vec4 position = gbufferModelViewInverse * gl_ModelViewMatrix * gl_Vertex;
 	worldpos = position.xyz + cameraPosition;
 
+	originalPosition = position.xyz;
+	originalWorldSpacePosition = worldpos.xyz;
+	originalBlockCentre = worldpos.xyz + (at_midBlock / 64);
+	
+	doPortals(position.xyz, worldpos.xyz, cameraPosition.xyz, worldpos.xyz + (at_midBlock / 64));
+	newPosition = position.xyz;
+	doAcid(position.xyz, cameraPosition);
+
 	color = gl_Color;
 	
 	texcoord = (gl_MultiTexCoord0).xy;
@@ -125,6 +143,7 @@ void main() {
 	}
 	if(mc_Entity.x == 10079.0) ambientNdotL.a = 0.5;
 	//---
+	
 	
 	gl_Position = gl_ProjectionMatrix * gbufferModelView * position;
 #ifdef TAA

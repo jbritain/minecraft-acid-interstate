@@ -1,5 +1,7 @@
 #version 120
 
+#define FSH
+
 #define gbuffers_shadows
 #define gbuffers_water
 #include "shaders.settings"
@@ -22,6 +24,14 @@ uniform vec3 shadowLightPosition;
 
 uniform float rainStrength;
 uniform float frameTimeCounter;
+
+in vec3 newPosition;
+in vec3 originalPosition;
+in vec3 originalWorldSpacePosition;
+in vec3 originalBlockCentre;
+uniform vec3 cameraPosition;
+uniform mat4 gbufferModelView;
+#include "/acid/portals.glsl"
 
 #ifdef Shadows
 uniform sampler2DShadow shadowtex0;
@@ -98,6 +108,8 @@ vec3 calcParallax(vec3 pos, float iswater){
 }
 
 void main() {
+	vec3 newPos = newPosition;
+	doPortals(newPos, originalWorldSpacePosition, cameraPosition, originalBlockCentre);
 
 	float iswater = clamp(ambientNdotL.a*2.0-1.0,0.0,1.0);
 
