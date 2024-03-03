@@ -1,0 +1,323 @@
+screen.TexturePack=Texture Pack
+
+option.TEXTURE_PACK_RESOLUTION=Texture Pack Resolution
+
+option.NORMAL_MAPS=Normal Map Texture Pack
+option.NORMAL_MAPS.comment=Disable this if you're using a texture-pack that does not have normal-map textures.
+
+option.SPECULARITY_MAPS=Specular Map Texture Pack
+option.SPECULARITY_MAPS.comment=Disable this if you're using a texture-pack that does not have specularity textures.
+
+
+screen.FOV=FOV Override
+screen.FOV.comment=FOV Override can mitigate chunk-rendering issues with large scale terrain deformation
+
+option.FOV_OVERRIDE=FOV Override
+option.FOV_OVERRIDE.comment=Manually override the FOV from the in-game setting. Set the in-game FOV higher than your actual FOV to reduce chunk artifacts with large-scale vertex deformations
+
+option.FOV_DEFAULT_TENS=In-game FOV
+option.FOV_TRUE_TENS=Actual FOV
+option.FOV_TRUE_FIVES=Actual FOV
+
+
+screen.Brightness=Brightness and Saturation
+
+option.EXPOSURE=Exposure
+option.EXPOSURE.comment=The brightness level of the entire scene
+
+option.SATURATION=Saturation
+option.SATURATION.comment=The saturation level of the entire scene
+
+option.SUN_LIGHT_LEVEL=Sun Light Level
+option.SUN_LIGHT_LEVEL.comment=The brightness level of sunlight
+
+option.SKY_LIGHT_LEVEL=Sky Light Level
+option.SKY_LIGHT_LEVEL.comment=The brightness level of skylight
+
+option.AMBIENT_LIGHT_LEVEL=Ambient Light Level
+option.AMBIENT_LIGHT_LEVEL.comment=The brightness level of ambient light, which is the only light inside dark caves, etc
+
+option.TORCH_LIGHT_LEVEL=Artificial Light Level
+option.TORCH_LIGHT_LEVEL.comment=The brightness level of artificial light sources, such as torches and glowstone
+
+option.SKY_BRIGHTNESS=Sky Brightness
+option.SKY_BRIGHTNESS.comment=The brightness level of the sky
+
+
+screen.Effects=Effects
+
+screen.Bloom=Bloom
+
+option.BLOOM_ENABLED=Bloom Enabled
+
+option.BLOOM_AMOUNT=Bloom Amount
+option.BLOOM_AMOUNT.comment=The visibility level of bloom, AKA Glow
+
+option.BLOOM_CURVE=Bloom Curve
+option.BLOOM_CURVE.comment=Higher values make the bloom more concentrated to bright areas, and also make the bloom more colorful
+
+
+screen.Motion_Blur=Motion Blur
+
+option.MOTION_BLUR=Motion Blur
+
+option.VARIABLE_MOTION_BLUR_SAMPLES=Sample Rate
+value.VARIABLE_MOTION_BLUR_SAMPLES.0=Constant
+value.VARIABLE_MOTION_BLUR_SAMPLES.1=Adaptive
+
+option.VARIABLE_MOTION_BLUR_SAMPLE_COEFFICIENT=Adaptive Sample Rate
+option.VARIABLE_MOTION_BLUR_SAMPLE_COEFFICIENT.comment=Medium Performance cost!
+
+option.MAX_MOTION_BLUR_SAMPLE_COUNT=Maximum Adaptive Samples
+option.MAX_MOTION_BLUR_SAMPLE_COUNT.comment=Medium performance cost!
+
+option.CONSTANT_MOTION_BLUR_SAMPLE_COUNT=Constant Samples
+option.CONSTANT_MOTION_BLUR_SAMPLE_COUNT.comment=Medium performance cost!
+
+option.MOTION_BLUR_INTENSITY=Blur Intensity
+
+option.MAX_MOTION_BLUR_AMOUNT=Max Blur Amount
+
+
+option.TERRAIN_PARALLAX=Terrain Parallax
+
+option.TERRAIN_PARALLAX_QUALITY=Terrain Parallax Quality
+option.TERRAIN_PARALLAX_DISTANCE=Terrain Parallax Distance
+option.TERRAIN_PARALLAX_INTENSITY=Terrain Parallax Intensity
+
+
+screen.Waving_Blocks=Waving Blocks
+option.WAVING_GRASS=Waving Grass
+option.WAVING_LEAVES=Waving Leaves
+option.WAVING_WATER=Waving Water
+
+
+screen.Shadows=Shadows
+
+option.sunPathRotation=Sun Path Rotation
+
+option.shadowMapResolution=Shadow Map Resolution
+
+option.SHADOW_MAP_BIAS=Shadow Map Bias
+option.SHADOW_MAP_BIAS.comment=Higher values make nearby shadows look better, at the cost of making farther off shadows look worse
+
+option.SHADOW_TYPE=Shadow Type
+option.SHADOW_TYPE.comment=Soft Shadows have a medium performance cost!
+value.SHADOW_TYPE.1=Hard Shadows
+value.SHADOW_TYPE.2=Soft Shadows
+
+option.PLAYER_SHADOW=Player Shadow
+option.PLAYER_SHADOW.comment=Whether or not the player casts a shadow
+
+
+screen.Composite0=GI & AO
+
+option.COMPOSITE0_SCALE=Effect Resolution
+option.COMPOSITE0_SCALE.comment=Rendering resolution of:. Global Illumination. Ambient Occlusion. Volumetric Light
+value.COMPOSITE0_SCALE.0.25=0.25x
+value.COMPOSITE0_SCALE.0.33=0.33x
+value.COMPOSITE0_SCALE.0.40=0.40x
+value.COMPOSITE0_SCALE.0.50=0.50x
+value.COMPOSITE0_SCALE.0.60=0.60x
+value.COMPOSITE0_SCALE.0.75=0.75x
+value.COMPOSITE0_SCALE.1.00=1.00x
+
+option.COMPOSITE0_NOISE=Ditherred Noise
+option.COMPOSITE0_NOISE.comment=Helps hide artifacts due to low sample counts. Medium performance cost!. Causes flickering at lower resolutions!
+
+
+screen.Fog=Fog
+
+option.FOG_ENABLED=Fog Enabled
+
+option.FOG_POWER=Fog Curve
+option.FOG_POWER.comment=Higher values make fog more subtle nearby, but more intense farther away
+
+option.FOG_START=Fog Start
+
+
+screen.GI=Global Illumination
+
+option.GI_ENABLED=Global Illumination
+
+option.PLAYER_GI_BOUNCE=Player GI Bounce
+option.PLAYER_GI_BOUNCE.comment=If this is enabled the player will cause GI to bounce off the player. This usually looks unnatural so it is off be default.
+
+option.GI_RADIUS=GI Radius
+option.GI_RADIUS.comment=The radius of global illumination light bounces
+
+option.GI_SAMPLE_COUNT=GI Sample Count
+option.GI_SAMPLE_COUNT.comment=Higher values have a high performance cost!
+
+option.GI_BOOST=GI Boost
+option.GI_BOOST.comment=Disables global illumination computations in certain situations where they will have a minimal visual impact (mostly in sunlight). High performance benefit!
+
+option.GI_TRANSLUCENCE=GI Translucence
+option.GI_TRANSLUCENCE.comment=Higher values make global illumination seem to "bounce through" surfaces, similar to subsurface scattering
+
+option.GI_BRIGHTNESS=GI Brightness
+
+
+screen.AO=Ambient Occlusion
+
+option.AO_ENABLED=Ambient Occlusion
+
+option.AO_SAMPLE_COUNT=AO Sample Count
+
+option.AO_RADIUS=AO Radius
+
+option.AO_INTENSITY=AO Intensity
+
+
+screen.Cloud2D=2D Cloud Plane
+
+option.CLOUDS_2D=2D Cloud Plane
+option.CLOUDS_2D.comment=Medium performance cost!
+
+option.CLOUD_HEIGHT_2D=2D Cloud Plane Height
+
+option.CLOUD_COVERAGE_2D=Cloud Coverage
+
+option.CLOUD_SPEED_2D=Cloud Speed
+
+
+screen.CLOUD3D=Volumetric Clouds
+
+option.CLOUD3D=Volumetric Clouds
+option.CLOUD3D_START_HEIGHT=Starting Height
+value.CLOUD3D_START_HEIGHT.260=250
+option.CLOUD3D_SAMPLES=Sample Count
+option.CLOUD3D_NOISE=Dithered Noise
+value.CLOUD3D_NOISE.0.0=OFF
+value.CLOUD3D_NOISE.1.0=ON
+option.CLOUD3D_DEPTH=Height
+option.CLOUD3D_DEPTH.comment=The height of the 3D cloud volume
+option.CLOUD3D_COVERAGE=Coverage
+option.CLOUD3D_DENSITY=Density
+option.CLOUD3D_SPEED=Speed
+
+
+option.STARS=Stars
+
+option.REFLECT_STARS=Reflect Stars
+
+option.ROTATE_STARS=Rotate Stars
+option.ROTATE_STARS.comment=Have the stars rotate with the sun/moon. Causes radially symmetric star patterns.
+
+option.STAR_SCALE=Star Scale
+
+option.STAR_BRIGHTNESS=Star Brightness
+
+option.STAR_COVERAGE=Star Coverage
+
+
+option.WATER_PARALLAX=Water Parallax
+option.WATER_PARALLAX.comment=High performance cost!
+
+option.WATER_CAUSTICS=Underwater Caustics
+option.WATER_CAUSTICS.comment=High performance cost!
+
+option.WATER_HEIGHT=Water Plane Height
+option.WATER_HEIGHT.comment=Assumed constant height for water surface
+
+option.VARIABLE_WATER_HEIGHT=Variable Water Height
+option.VARIABLE_WATER_HEIGHT.comment=Fallback to lightmaps to determine underwater depth. For situations with variable water surface heights
+
+option.UNDERWATER_LIGHT_DEPTH=Underwater light depth
+option.UNDERWATER_LIGHT_DEPTH.comment=How deep light penetrates below the water surface. Can be set manually in /UserProgram/WaterHeight.glsl
+value.UNDERWATER_LIGHT_DEPTH.65536=Infinite
+
+option.WAVE_MULT=Wave Height
+option.WAVE_SPEED=Wave Speed
+
+
+screen.Time=Time Override
+
+option.TIME_OVERRIDE=Time Override
+option.TIME_OVERRIDE.comment=Modify or override the in-game time, based on the settings on this page
+
+option.TIME_OVERRIDE_MODE=Override Mode
+value.TIME_OVERRIDE_MODE.1=Constant Time
+value.TIME_OVERRIDE_MODE.2=Day/Night only
+value.TIME_OVERRIDE_MODE.3=Misc Time Effect
+
+option.CONSTANT_TIME_HOUR=Constant Time Hour
+option.CONSTANT_TIME_HOUR.comment=The hour to set the time. Example: 3 = 3000 ticks
+
+option.CUSTOM_DAY_NIGHT=Day/Night Only
+value.CUSTOM_DAY_NIGHT.1=Day Only
+value.CUSTOM_DAY_NIGHT.2=Night Only
+
+option.CUSTOM_TIME_MISC=Misc
+value.CUSTOM_TIME_MISC.1=Old North
+value.CUSTOM_TIME_MISC.2=User Defined Rotation
+
+
+screen.Deform=Terrain Deformation
+
+option.DEFORM=Terrain Deformation
+
+option.DEFORMATION=Deformation Type
+value.DEFORMATION.1=Planetoid
+value.DEFORMATION.2=Acid Shaders
+value.DEFORMATION.3=User Deformation
+
+
+screen.Misc=Misc
+
+option.HIDE_ENTITIES=Hide Entities
+
+option.LIGHT_DESATURATION=Light Desturation
+
+option.CLEAR_WATER=Clear Water
+
+option.WEATHER=Weather
+option.WEATHER.comment=Weather is not really set up yet.
+
+
+screen.Telefocal=Telefocal Shadows
+screen.Telefocal.comment=Focus the shadow quality-center to a coordinate, or the center of your screen
+
+option.TELEFOCAL_SHADOWS=Telefocal Shadows
+option.TELEFOCAL_SHADOWS.comment=Focus the shadow quality-center to a coordinate, or the center of your screen
+
+option.SHADOWS_FOCUS_CENTER=Focus Center
+option.SHADOWS_FOCUS_CENTER.comment=Focus shadow quality to the center of your screen. "centerDepthSmooth" must be enabled for this feature! It can be enabled in: /UserProgram/centerDepthSmooth.glsl
+
+option.Shadow_Focus_X=Shadow Focus X
+option.Shadow_Focus_X.comment=The X coordinate of the shadow map's highest quality zone. This coordinate can be set in: /UserProgram/Shadow_Focus.glsl. These coordinates are overwritten by the "Focus Center" option
+option.Shadow_Focus_Y=Shadow Focus Y
+option.Shadow_Focus_Y.comment=The Y coordinate of the shadow map's highest quality zone. This coordinate can be set in: /UserProgram/Shadow_Focus.glsl. These coordinates are overwritten by the "Focus Center" option
+option.Shadow_Focus_Z=Shadow Focus Z
+option.Shadow_Focus_Z.comment=The Z coordinate of the shadow map's highest quality zone. This coordinate can be set in: /UserProgram/Shadow_Focus.glsl. These coordinates are overwritten by the "Focus Center" option
+
+
+option.WATER_SHADOW=Water Shadow
+
+
+option.FORCE_COMPATIBILITY=Force Compatibility Mode
+
+
+screen.Debug=Development
+
+option.DEBUG=Debug Mode
+
+option.DEBUG_VIEW=Debug Shader View
+option.DEBUG_VIEW.comment=The shader stage you're debugging
+value.DEBUG_VIEW.-1=gbuffers_main
+value.DEBUG_VIEW.0=composite
+value.DEBUG_VIEW.1=composite1
+value.DEBUG_VIEW.2=composite2
+value.DEBUG_VIEW.3=composite3
+value.DEBUG_VIEW.7=final
+
+option.CUSTOM_TIME_CYCLE=Custom Time Cycle
+
+option.FREEZE_TIME=Freeze Time
+option.FREEZE_TIME.comment=Disable animations and keep them in a static position. Helpful for screenshot comparisons
+
+option.FRAMERATE_BOUND_TIME=Framerate Based Animations
+option.FRAMERATE_BOUND_TIME.comment=Animate based on number of output frames, instead of system time. Useful for non-realtime fixed-framerate recording with Minema.
+
+option.ANIMATION_FRAMERATE=Animation Framerate
+option.ANIMATION_FRAMERATE.comment=The fixed-framerate to assume when animating based on framerate.
