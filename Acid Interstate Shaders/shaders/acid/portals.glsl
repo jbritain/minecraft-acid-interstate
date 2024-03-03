@@ -158,6 +158,11 @@ float doPortals(in vec3 position, in vec3 cameraPosition, in vec3 midblock){
   vec3 worldSpacePosition = position + cameraPosition;
   vec3 blockCentre = worldSpacePosition + (midblock / 64);
   
+  doPortal(position, worldSpacePosition, 3360.5, blockCentre, cameraPosition);
+  doPortal(position, worldSpacePosition, 4480.5, blockCentre, cameraPosition);
+  doPortal(position, worldSpacePosition, 5600.5, blockCentre, cameraPosition);
+  doPortal(position, worldSpacePosition, 7840.5, blockCentre, cameraPosition);
+  doPortal(position, worldSpacePosition, 10067.5, blockCentre, cameraPosition);
   //doExitPortal(position, 14720);
 
   return nearestPortalDistance;
