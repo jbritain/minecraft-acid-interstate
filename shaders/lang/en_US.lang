@@ -1,0 +1,401 @@
+option.INFO=Ebin Resurrected
+value.INFO.0=§dby jbritain
+value.INFO.1=§aby BruceKnowsHow
+
+screen.WORLD=World
+screen.MATERIALS=Materials
+screen.SKY=Sky
+screen.ATMOSPHERICS=Atmosphere
+screen.LIGHTING=Shadows & Lighting
+screen.POST_PROCESSING=Post Processing
+screen.MISC=Misc.
+screen.DEBUG=Development
+screen.WATER=Water
+screen.TIME=Time Override
+screen.DEFORM=Terrain Deformation
+screen.CLOUDS2D=2D Cloud Settings
+screen.CLOUDS3D=Volumetric Cloud Settings
+screen.STARS=Stars
+screen.SHADOWS=Shadow Settings
+screen.LIGHT_LEVELS=Light Levels
+screen.VL=Volumetric Fog Settings
+screen.AO=Ambient Occlusion Settings
+screen.GI=Global Illumination Settings
+screen.RESOURCE_PACK=Resource Pack Settings
+screen.REFLECTIONS=Reflection Settings
+screen.BLOOM=Bloom Settings
+screen.MOTION_BLUR=Motion Blur Settings
+screen.EXPERIMENTAL=Experiments
+
+
+profile.POTATO=§6Potato
+profile.POTATO.comment=§6Potato §f- For that rebadged optiplex with a GT 710 and a 3rd gen i5 that your grandma thought was a gaming PC.
+
+profile.LOW=§2Low
+profile.LOW.comment=§2Low §f- For your GTX 1050 that's been hanging on for dear life for the last 8 years.
+
+profile.MEDIUM=§aMedium
+profile.MEDIUM.comment=§aMedium §f- Runs at ~120FPS on my RX 590.
+
+profile.HIGH=§bHigh
+profile.HIGH.comment=§bHigh §f- For any half decent PC.
+
+profile.ULTRA=§dUltra
+profile.ULTRA.comment=§dUltra §f- Feeling fancy, are we?
+
+option.TEXTURE_PACK_RESOLUTION=Texture Resolution
+value.TEXTURE_PACK_RESOLUTION.0=Auto
+
+option.HARDCODED_EMISSION=Hardcoded Emission
+option.HARDCODED_EMISSION.comment=Hardcoded emission data for blocks like torches.
+
+option.HARDCODED_SPECULAR=Hardcoded Specular
+option.HARDCODED_SPECULAR.comment=Hardcoded specular mapping for blocks like metals.
+
+option.HARDCODED_SSS=Hardcoded Subsurface Scattering
+option.HARDCODED_SSS.comment=Hardcoded subsurface scattering for blocks like leaves.
+
+option.GLOWING_ORES=Glowing Ores
+option.GLOWING_ORES.comment=Makes ores glow, so they are easier to spot.
+
+option.MULTIPLY_METAL_ALBEDO=Metal Albedo Tinting
+option.MULTIPLY_METAL_ALBEDO.comment=Tints metal reflections with the albedo colour. Disable if resource pack does not support this.
+
+option.NORMAL_MAPS=Normal Maps
+option.NORMAL_MAPS.comment=Use normal map data from the resource pack.
+
+option.SPECULAR_MAPS=Specular Maps
+option.SPECULAR_MAPS.comment=Use specular map data from resource pack.
+
+option.EMISSION=Emission
+option.Emission.comment=Makes some objects glow in the dark
+
+option.REFLECTION_SAMPLES=Rough Reflection Samples
+option.REFLECTION_SAMPLES.comment=Number of samples taken for reflections on rough surfaces. §cHigher values will severely impact performance.
+
+option.ROUGH_REFLECTION_THRESHOLD=Rough Reflection Threshold
+option.ROUGH_REFLECTION_THRESHOLD.comment=Materials with a roughness value greater than the threshold will not reflect. Higher values have a higher performance cost and may cause visual noise. §eSetting this to 0 disables rough reflections!§
+
+option.DYNAMIC_NOISE=Dynamic Noise
+option.DYNAMIC_NOISE.comment=Use different noise every frame for reflections and shadows. Useful if you're blending frames in post.
+
+option.SUBSURFACE_SCATTERING=Subsurface Scattering
+option.SUBSURFACE_SCATTERING.comment=Allows some blocks to scatter sunlight through them, and be lit on the side facing away from the sun.
+
+option.FOV_OVERRIDE=FOV Override
+option.FOV_OVERRIDE.comment=Manually override the FOV from the in-game setting. Set the in-game FOV higher than your actual FOV to reduce chunk artifacts with large-scale vertex deformations. May cause crashes on AMD!
+
+option.FOV_DEFAULT_TENS=In-game FOV
+option.FOV_TRUE_TENS=Actual FOV
+option.FOV_TRUE_FIVES=Actual FOV
+
+option.EXPOSURE=Exposure
+option.EXPOSURE.comment=The brightness level of the entire scene
+
+option.SATURATION=Saturation
+option.SATURATION.comment=The saturation level of the entire scene. On Bruce's version of Ebin, this was set to 1.2, or 1.0 in older versions.
+
+option.SUN_LIGHT_LEVEL=Sun Light Level
+option.SUN_LIGHT_LEVEL.comment=The brightness level of sunlight
+
+option.SKY_LIGHT_LEVEL=Sky Light Level
+option.SKY_LIGHT_LEVEL.comment=The brightness level of skylight
+
+option.AMBIENT_LIGHT_LEVEL=Ambient Light Level
+option.AMBIENT_LIGHT_LEVEL.comment=The brightness level of ambient light, which is the only light inside dark caves, etc
+
+option.TORCH_LIGHT_LEVEL=Artificial Light Level
+option.TORCH_LIGHT_LEVEL.comment=The brightness level of artificial light sources, such as torches and glowstone
+
+option.SKY_BRIGHTNESS=Sky Brightness
+option.SKY_BRIGHTNESS.comment=The brightness level of the sky
+
+option.BLOOM_ENABLED=Bloom
+
+option.BLOOM_AMOUNT=Bloom Amount
+option.BLOOM_AMOUNT.comment=The visibility level of bloom, AKA Glow
+
+option.BLOOM_CURVE=Bloom Curve
+option.BLOOM_CURVE.comment=Higher values make the bloom more concentrated to bright areas, and also make the bloom more colorful
+
+option.MOTION_BLUR=Motion Blur
+option.MOTION_BLUR.commment=You monster
+
+option.VARIABLE_MOTION_BLUR_SAMPLES=Sample Rate
+value.VARIABLE_MOTION_BLUR_SAMPLES.0=Constant
+value.VARIABLE_MOTION_BLUR_SAMPLES.1=Adaptive
+
+option.VARIABLE_MOTION_BLUR_SAMPLE_COEFFICIENT=Adaptive Sample Rate
+option.VARIABLE_MOTION_BLUR_SAMPLE_COEFFICIENT.comment=Medium Performance cost!
+
+option.MAX_MOTION_BLUR_SAMPLE_COUNT=Maximum Adaptive Samples
+option.MAX_MOTION_BLUR_SAMPLE_COUNT.comment=Medium performance cost!
+
+option.CONSTANT_MOTION_BLUR_SAMPLE_COUNT=Constant Samples
+option.CONSTANT_MOTION_BLUR_SAMPLE_COUNT.comment=Medium performance cost!
+
+option.MOTION_BLUR_INTENSITY=Blur Intensity
+
+option.MAX_MOTION_BLUR_AMOUNT=Max Blur Amount
+
+
+option.TERRAIN_PARALLAX=Terrain Parallax
+
+option.TERRAIN_PARALLAX_QUALITY=Terrain Parallax Quality
+option.TERRAIN_PARALLAX_DISTANCE=Terrain Parallax Distance
+option.TERRAIN_PARALLAX_INTENSITY=Terrain Parallax Intensity
+
+option.WAVING_GRASS=Waving Plants
+option.WAVING_LEAVES=Waving Leaves
+option.WAVING_WATER=Waving Water
+
+option.sunPathRotation=Sun Path Rotation
+
+option.shadowMapResolution=Shadow Map Resolution
+option.shadowDistance=Shadow Distance
+
+option.SHADOW_MAP_BIAS=Shadow Map Bias
+option.SHADOW_MAP_BIAS.comment=Higher values make nearby shadows look better, at the cost of making farther off shadows look worse.
+
+option.SHADOW_TYPE=Shadow Type
+option.SHADOW_TYPE.comment=Soft shadows have a constant sample radius/softness. PCSS shadows are softer based on how far away the object casting the shadow is.
+value.SHADOW_TYPE.0=Disabled
+value.SHADOW_TYPE.1=Hard Shadows
+value.SHADOW_TYPE.2=Soft Shadows
+value.SHADOW_TYPE.3=PCSS Shadows
+
+option.SHADOW_SOFTNESS=Soft Shadow Radius
+option.SHADOW_SOFTNESS.comment=Radius in which shadow samples are made. Does not apply to PCSS or hard shadows.
+
+option.SHADOW_SAMPLES=Shadow Samples
+option.SHADOW_SAMPLES.comment=Number of shadow samples. Only applies to soft and PCSS shadows.
+
+option.TRANSPARENT_SHADOWS=Transparent Shadows
+option.TRANSPARENT_SHADOWS.comment=Allows transparent objects to tint the colour of sunlight.
+
+option.PLAYER_SHADOW=Player Shadow
+option.PLAYER_SHADOW.comment=Whether or not the player casts a shadow
+
+option.COMPOSITE0_SCALE=Effect Resolution
+option.COMPOSITE0_SCALE.comment=Rendering resolution of:. Global Illumination. Ambient Occlusion. Volumetric Light
+value.COMPOSITE0_SCALE.0.25=0.25x
+value.COMPOSITE0_SCALE.0.33=0.33x
+value.COMPOSITE0_SCALE.0.40=0.40x
+value.COMPOSITE0_SCALE.0.50=0.50x
+value.COMPOSITE0_SCALE.0.60=0.60x
+value.COMPOSITE0_SCALE.0.75=0.75x
+value.COMPOSITE0_SCALE.1.00=1.00x
+
+option.COMPOSITE0_NOISE=Ditherred Noise
+option.COMPOSITE0_NOISE.comment=Helps hide artifacts due to low sample counts. Medium performance cost!. Causes flickering at lower resolutions!
+
+option.FOG_ENABLED=Fog
+
+option.FOG_POWER=Fog Curve
+option.FOG_POWER.comment=Higher values make fog more subtle nearby, but more intense farther away
+
+option.FOG_START=Fog Start
+
+option.GI_ENABLED=Global Illumination
+
+option.PLAYER_GI_BOUNCE=Player GI Bounce
+option.PLAYER_GI_BOUNCE.comment=If this is enabled the player will cause GI to bounce off the player. This usually looks unnatural so it is off be default.
+
+option.GI_RADIUS=GI Radius
+option.GI_RADIUS.comment=The radius of global illumination light bounces
+
+option.GI_SAMPLE_COUNT=GI Sample Count
+option.GI_SAMPLE_COUNT.comment=Higher values have a high performance cost!
+
+option.GI_BOOST=GI Boost
+option.GI_BOOST.comment=Disables global illumination computations in certain situations where they will have a minimal visual impact (mostly in sunlight). High performance benefit!
+
+option.GI_TRANSLUCENCE=GI Translucence
+option.GI_TRANSLUCENCE.comment=Higher values make global illumination seem to "bounce through" surfaces, similar to subsurface scattering
+
+option.GI_BRIGHTNESS=GI Brightness
+
+option.AO_ENABLED=Ambient Occlusion
+
+option.AO_SAMPLE_COUNT=AO Sample Count
+
+option.AO_RADIUS=AO Radius
+
+option.AO_INTENSITY=AO Intensity
+
+option.VL_ENABLED=Volumetric Fog
+option.VL_ENABLED.comment=Scatters sunlight through fog based on shadows.
+option.VL_QUALITY=Volumetric Fog Quality
+option.VL_STRENGTH=Volumetric Fog Strength
+
+option.CLOUD2D=2D Clouds
+
+option.CLOUD2D_HEIGHT=2D Cloud Plane Height
+
+option.CLOUD2D_COVERAGE=Cloud Coverage
+
+option.CLOUD2D_SPEED=Cloud Speed
+
+option.CLOUD3D=Volumetric Clouds
+option.CLOUD3D_START_HEIGHT=Starting Height
+value.CLOUD3D_START_HEIGHT.260=250
+option.CLOUD3D_SAMPLES=Sample Count
+option.CLOUD3D_DEPTH=Height
+option.CLOUD3D_DEPTH.comment=The height of the 3D cloud volume
+option.CLOUD3D_COVERAGE=Coverage
+option.CLOUD3D_DENSITY=Density
+option.CLOUD3D_SPEED=Speed
+option.CLOUD3D_LIGHTING=Cloud Lighting Function
+option.CLOUD3D_LIGHTING.comment=Select from a choice of 3 lighting functions for the clouds.
+
+option.BIOME_WEATHER=Biome Specific Weather
+option.BIOME_WEATHER.comment=Affects volumetric cloud density based on biome humidity and prevents clouds from getting denser in the rain in biomes where it can't rain.
+
+option.STARS=Stars
+
+option.REFLECT_STARS=Reflect Stars
+
+option.ROTATE_STARS=Rotate Stars
+option.ROTATE_STARS.comment=Have the stars rotate with the sun/moon. Causes radially symmetric star patterns.
+
+option.STAR_SCALE=Star Scale
+
+option.STAR_BRIGHTNESS=Star Brightness
+
+option.STAR_COVERAGE=Star Coverage
+
+
+option.WATER_PARALLAX=Water Parallax
+option.WATER_PARALLAX.comment=High performance cost!
+
+option.WATER_CAUSTICS=Underwater Caustics
+option.WATER_CAUSTICS.comment=Emulates the effect of sunlight refracting through water. Works best if volumetric fog is enabled as well!
+
+option.WATER_HEIGHT=Sea level
+option.WATER_HEIGHT.comment=Assumed constant height for water surface
+
+option.VARIABLE_WATER_HEIGHT=Variable Water Height
+option.VARIABLE_WATER_HEIGHT.comment=Fallback to lightmaps to determine underwater depth. For situations with variable water surface heights
+
+option.UNDERWATER_LIGHT_DEPTH=Underwater light depth
+option.UNDERWATER_LIGHT_DEPTH.comment=How deep light penetrates below the water surface. Can be set manually in /UserProgram/WaterHeight.glsl
+value.UNDERWATER_LIGHT_DEPTH.65536=Infinite
+
+option.WAVE_MULT=Wave Height
+option.WAVE_SPEED=Wave Speed
+
+option.TIME_OVERRIDE=Time Override
+option.TIME_OVERRIDE.comment=Modify or override the in-game time, based on the settings on this page
+
+option.TIME_OVERRIDE_MODE=Override Mode
+value.TIME_OVERRIDE_MODE.1=Constant Time
+value.TIME_OVERRIDE_MODE.2=Day/Night only
+value.TIME_OVERRIDE_MODE.3=Misc Time Effect
+
+option.CONSTANT_TIME_HOUR=Constant Time Hour
+option.CONSTANT_TIME_HOUR.comment=The hour to set the time. Example: 3 = 3000 ticks
+
+option.CUSTOM_DAY_NIGHT=Day/Night Only
+value.CUSTOM_DAY_NIGHT.1=Day Only
+value.CUSTOM_DAY_NIGHT.2=Night Only
+
+option.CUSTOM_TIME_MISC=Misc
+value.CUSTOM_TIME_MISC.1=Old North
+value.CUSTOM_TIME_MISC.2=User Defined Rotation
+
+option.DEFORM=Terrain Deformation
+
+option.DEFORMATION=Deformation Type
+value.DEFORMATION.1=Planetoid
+value.DEFORMATION.2=Acid Shaders
+value.DEFORMATION.3=Animal Crossing
+value.DEFORMATION.4=User Deformation
+
+option.HIDE_ENTITIES=Hide Entities
+
+option.LIGHT_DESATURATION=Light Desaturation
+option.LIGHT_DESATURATION.comment=Reduces saturation on light sources.
+
+option.CLEAR_WATER=Clear Water
+option.CLEAR_WATER.comment=Makes water much easier to see through.
+
+option.BIOME_WATER_TINT=Biome Water Tint
+option.BIOME_WATER_TINT.comment=Tints water colour based on biome.
+
+option.SMOOTH_ICE=Smooth Ice
+option.SMOOTH_ICE.comment=Disables texturing on ice, making it look very smooth.
+
+option.TELEFOCAL_SHADOWS=Telefocal Shadows
+option.TELEFOCAL_SHADOWS.comment=Focus the shadow quality-center to a coordinate, or the center of your screen
+
+option.SHADOWS_FOCUS_CENTER=Focus Center
+option.SHADOWS_FOCUS_CENTER.comment=Focus shadow quality to the center of your screen. "centerDepthSmooth" must be enabled for this feature! It can be enabled in: /UserProgram/centerDepthSmooth.glsl
+
+option.Shadow_Focus_X=Shadow Focus X
+option.Shadow_Focus_X.comment=The X coordinate of the shadow map's highest quality zone. This coordinate can be set in: /UserProgram/Shadow_Focus.glsl. These coordinates are overwritten by the "Focus Center" option
+option.Shadow_Focus_Y=Shadow Focus Y
+option.Shadow_Focus_Y.comment=The Y coordinate of the shadow map's highest quality zone. This coordinate can be set in: /UserProgram/Shadow_Focus.glsl. These coordinates are overwritten by the "Focus Center" option
+option.Shadow_Focus_Z=Shadow Focus Z
+option.Shadow_Focus_Z.comment=The Z coordinate of the shadow map's highest quality zone. This coordinate can be set in: /UserProgram/Shadow_Focus.glsl. These coordinates are overwritten by the "Focus Center" option
+
+option.RAIN=Rain
+option.RAIN.comment=Enables rain particles. If rendering water behind translucents is disabled, rain will be dithered such that water still renders behind it. §cWith volumetric fog enabled, this does not look good.
+
+option.WATER_SHADOW=Water Shadow
+
+option.FORCE_COMPATIBILITY=Force Compatibility Mode
+
+option.DEBUG=Debug Mode
+
+option.DEBUG_VIEW=Debug Shader View
+option.DEBUG_VIEW.comment=The shader stage you're debugging
+value.DEBUG_VIEW.-1=gbuffers_main
+value.DEBUG_VIEW.0=composite
+value.DEBUG_VIEW.1=composite1
+value.DEBUG_VIEW.2=composite2
+value.DEBUG_VIEW.3=composite3
+value.DEBUG_VIEW.7=final
+
+option.CUSTOM_TIME_CYCLE=Custom Time Cycle
+
+option.FREEZE_TIME=Freeze Time
+option.FREEZE_TIME.comment=Disable animations and keep them in a static position. Helpful for screenshot comparisons
+
+option.FRAMERATE_BOUND_TIME=Framerate Based Animations
+option.FRAMERATE_BOUND_TIME.comment=Animate based on number of output frames, instead of system time. Useful for non-realtime fixed-framerate recording with Minema.
+
+option.ANIMATION_FRAMERATE=Animation Framerate
+option.ANIMATION_FRAMERATE.comment=The fixed-framerate to assume when animating based on framerate.
+
+option.WARM_TORCHLIGHT=Warm Torchlight
+option.WARM_TORCHLIGHT.comment=Whether the torchlight (and other artificial light) is warm, or neutral.
+
+option.DIRECTIONAL_LIGHTING=Directional Lighting
+option.DIRECTIONAL_LIGHTING.comment=Use normal maps and the lightmap to approximate 3D lighting from artifical light sources (i.e torches) on blocks.
+
+option.WATER_REFRACTION=Water Refraction
+option.WATER_REFRACTION.comment=Distort stuff visible through water due to the refraction of light. §cThis feature currently has mild artifacts (pixels refracted offscreen keep their original colour).
+
+option.LABPBR_VERSION=labPBR Version
+
+option.FLOODFILL_BLOCKLIGHT=Colored Blocklight
+option.FLOODFILL_BLOCKLIGHT.comment=Uses a floodfill algorithm in the shadow pass to determine the colour of blocklighting. §cThis feature requires hardware which supports custom images.
+
+option.HANDLIGHT=Dynamic Handlight
+option.HANDLIGHT.comment=Illuminates an area around the player when a light source is held in their hand.
+
+option.TONEMAP=Tonemap
+option.TONEMAP.comment=Modern versions of Ebin use the ACES tonemap. Older versions used Reinhard.
+value.TONEMAP.1=Reinhard
+
+value.TONEMAP.2=ACES
+
+value.TONEMAP.3=Burgess (Stock)
+value.TONEMAP.4=Burgess (Ebin)
+value.TONEMAP.5=Burgess (Continuity)
+
+value.TONEMAP.6=Uncharted 2
+
+option.VERSION=Version
+value.VERSION.0=SOURCE
+value.VERSION.1=ROLLING
