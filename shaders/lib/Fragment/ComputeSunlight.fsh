@@ -88,7 +88,7 @@ vec3 ComputeShadows(vec3 shadowClipPos, float penumbraWidthBlocks, bool useImage
 	return shadowSum;
 }
 
-float GetBlockerDistance(vec3 shadowClipPos){
+float GetBlockerDistance(vec3 shadowClipPos, bool useImageShadowMap){
 	float biasCoeff;
 
 	float range = float(BLOCKER_SEARCH_RADIUS) / (2 * shadowDistance);
@@ -103,7 +103,12 @@ float GetBlockerDistance(vec3 shadowClipPos){
 	for(int i = 0; i < BLOCKER_SEARCH_SAMPLES; i++){
 		vec2 offset = VogelDiscSample(i, BLOCKER_SEARCH_SAMPLES, noise);
 		vec3 newShadowScreenPos = BiasShadowProjection(shadowClipPos + vec3(offset * range, 0.0), biasCoeff) * 0.5 + 0.5;
-		float newBlockerDepth = texture(shadowtex0, newShadowScreenPos.xy).r;
+		float newBlockerDepth;
+		if(useImageShadowMap){
+			newBlockerDepth = texture(portalshadowtex, newShadowScreenPos.xy).r;
+		} else {
+			newBlockerDepth = texture(shadowtex0, newShadowScreenPos.xy).r;
+		}
 		if (newBlockerDepth < receiverDepth){
 			blockerDistance += (receiverDepth - newBlockerDepth);
 			blockerCount += 1;
@@ -144,7 +149,7 @@ vec3 ComputeSunlight(vec3 worldSpacePosition, vec3 normal, vec3 geometryNormal, 
 	float penumbraWidth = SHADOW_SOFTNESS * rcp(10); // soft shadows
 
 	vec3 shadow = ComputeShadows(shadowClipPos, penumbraWidth, useImageShadowMap);
-	float blockerDistance = GetBlockerDistance(shadowClipPos);
+	float blockerDistance = GetBlockerDistance(shadowClipPos, useImageShadowMap);
 
 	float scatter = ComputeSSS(blockerDistance, SSS, geometryNormal);
 	sunlight = max(shadow * nDotL, scatter);

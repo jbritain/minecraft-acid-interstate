@@ -1,3 +1,4 @@
+
 void doRotationEffect(inout vec3 position, in float rotAmount, in float stretch, in float startX, in float endX, in float X){
 
   float xDistance = position.x / 512.0;
@@ -93,5 +94,17 @@ void doScaleYEffect(inout vec3 position, in float amount, in float startX, in fl
     if (sign(oldY) != sign(position.y)){
       position.y = 0;
     }
+  }
+}
+
+void doWeirdSpiralEffect(inout vec3 position, in float radius, in float rotation, in float apply, in float startX, in float endX, in float X){
+  if (shouldEnableBetweenX(startX, endX, X) == 1){
+    vec3 newPosition;
+    newPosition = rotate(position, vec3(-sign(position.z), 0, 0), position.z / -radius);
+    newPosition.y -= radius;
+    newPosition = rotate(newPosition, vec3(sign(rotation), 0, 0), (pow(abs(newPosition.x), 1.1) * rotation * sign(abs(newPosition.x))) / 512);
+    newPosition.y += radius;
+    
+    position = mix(position, newPosition, apply);
   }
 }
