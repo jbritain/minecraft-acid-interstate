@@ -16,15 +16,7 @@ uniform float frameTimeCounter;
 #define FRAMERATE_BOUND_TIME
 #define ANIMATION_FRAMERATE 60.0 // [24.0 30.0 60.0 120.0 90.0 144.0 240.0]
 
-#ifdef FREEZE_TIME
-	cfloat TIME = 0.0;
-#else
-	#ifdef FRAMERATE_BOUND_TIME
-		float TIME = frameCounter / float(ANIMATION_FRAMERATE);
-	#else
-		float TIME = frameTimeCounter;
-	#endif
-#endif
+float TIME = cameraPosition.x / 8;
 
 cvec4 swizzle = vec4(1.0, 0.0, -1.0, 0.5);
 

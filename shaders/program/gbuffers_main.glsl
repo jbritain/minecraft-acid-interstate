@@ -258,7 +258,7 @@ vec4 GetDiffuse(vec2 coord, float materialIDs) {
         return diffuse;
     }
 
-    if(materialIDs == 3){ // grass
+    if(materialIDs == 3 || materialIDs == 2002){ // grass
         vec3 color2 = hsv(color);
         if(color2.g > 0.0){
             color2.r = 104/360.0;
