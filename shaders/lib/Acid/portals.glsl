@@ -5,9 +5,9 @@
 
 // HERE YOU SHOULD PUT THE X COORDINATES OF YOUR PORTALS
 const float[3] portals = float[3](
-  2304.5,
-  3808.5,
-  5376.5
+  1344.5,
+  2512.5,
+  3736.5
 );
 
 float getNearestPortalX(float x, out float nearestDistance){

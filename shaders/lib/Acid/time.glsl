@@ -12,7 +12,7 @@ float timeTransition(float startTime, float endTime, float startX, float endX, f
 
 // HERE YOU SHOULD PUT YOUR TIME OVERRIDE CODE
 float getTime(float x){
-  return 6000;
+  return timeTransition(-500, 12000, 0, 3737, cameraPosition.x, false);
 }
 
 // as featured in #snippets in shaderLABS

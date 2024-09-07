@@ -49,12 +49,12 @@ bool IsInsideFrustum(vec3 pos, vec3 center, float horizontalSpan, float vertical
   }
 }
 
-#define PORTAL_RENDER_DISTANCE 32
+#define PORTAL_RENDER_DISTANCE 16
 #define PORTAL_Y 64.5
 #define PORTAL_WIDTH 3
 #define PORTAL_HEIGHT 3
 
-// 0 if in left portal area, 1 if in portal null zone, 2 if in right portal area (assumes a value outside the transition zone will not be passed in)
+// 1 if in left portal area, 2 if in portal null zone, 3 if in right portal area (assumes a value outside the transition zone will not be passed in)
 int getZoneSegment(in vec3 position){
 	if(position.z >= -2 && position.z <= 3){
 		return 2;
@@ -88,7 +88,7 @@ void doPortal(float portalX, vec3 position, vec3 midblock){
 	#endif
 
 	if(zoneSegment == 1){
-		position.z += PORTAL_RENDER_DISTANCE * 16 / 2 + 2;
+		position.z += PORTAL_RENDER_DISTANCE * 16 / 2 + 3;
 	} else if (zoneSegment == 3) {
 		position.z -= PORTAL_RENDER_DISTANCE * 16 / 2 + 3;
 	}

@@ -1,16 +1,7 @@
-
-void doRotationEffect(inout vec3 position, in float rotAmount, in float stretch, in float startX, in float endX, in float X){
-
-  float xDistance = position.x / 512.0;
-  xDistance = xDistance / 2 + 0.5;
-
-  rotAmount *= (xDistance * 2);
+void doRotationEffect(inout vec3 position, in float rotAmount, in float offset, in float startX, in float endX, in float X){
 
   if (shouldEnableBetweenX(startX, endX, X) == 1){
-    // transform up two blocks so we are rotating around the blocks the track is placed on
-    position.y += 1.5;
-    position = position.xyz * rotateX(sin(((position.x * stretch) / 100)) * rotAmount); // the actual rotation
-    position.y -= 1.5;
+    position = position.xyz * rotateX(sin(((position.x + offset) / 100) * rotAmount));
   }
 }
 
@@ -21,7 +12,7 @@ void doRotationEffect(inout vec3 position, in float rotAmount, in float stretch,
 void doCurveYEffect(inout vec3 position, in float rotAmount, in float XOffset, in float ZOffset, in float startX, in float endX, in float X) {
   if (shouldEnableBetweenX(startX, endX, X) == 1){
     position.xyz = translate(position.xyz, vec3(XOffset, 0, ZOffset));
-    position.xyz = rotate(position.xyz, vec3(0, sign(rotAmount) * sign(position.x), 0), rotAmount * 0.005 * position.x);
+    position.xyz = rotate(position.xyz, vec3(0, sign(rotAmount), 0), rotAmount * 0.005 * position.x);
     position.xyz = translate(position.xyz, vec3(-XOffset, 0, -ZOffset));
   }
 }
@@ -68,43 +59,18 @@ void doSquashXEffect(inout vec3 position, in float amount, in float startX, in f
 
 void doSinAlongX(inout vec3 position, in float amount, in float stretch, in float startX, in float endX, in float X){
   if (shouldEnableBetweenX(startX, endX, X) == 1){
-    position.y += sin(((position.x * stretch) / 100)) * amount;
+    if (stretch == 0){
+      position.y += amount * 0.1 * sin(position.x) * max(0, log(abs(position.z)));
+    } else {
+      position.y += amount * 0.1 * sin(position.x + stretch) * max(0, log(abs(position.z)));
+    }
+    
   }
 }
 
 void doWaveAlongX(inout vec3 position, in float amount, in float startX, in float endX, in float x){
   float pi = acos(-1.0);
   if (shouldEnableBetweenX(startX, endX, x) == 1){
-    position.y += amount * (cos(2 * pi * (position.x / 32))-1);
-  }
-}
-
-void doNewCurveYEffect(inout vec3 position, in float startAngle, in float curveAngle, in float startX, in float endX, in float X){
-  if (shouldEnableBetweenX(startX, endX, X) == 1){
-    position = rotate(position, vec3(0, -sign(startAngle), 0), -(startAngle / (2 * acos(0))));
-    position = rotate(position, vec3(0, sign(curveAngle) * sign(position.x), 0), (curveAngle / (2 * acos(0))) * (position.x / 256.0));
-  }
-}
-
-void doScaleYEffect(inout vec3 position, in float amount, in float startX, in float endX, in float X){
-  if (shouldEnableBetweenX(startX, endX, X) == 1){
-    float oldY = position.y;
-    position.y *= ((amount * (position.x / 512)) + 1);
-
-    if (sign(oldY) != sign(position.y)){
-      position.y = 0;
-    }
-  }
-}
-
-void doWeirdSpiralEffect(inout vec3 position, in float radius, in float rotation, in float apply, in float startX, in float endX, in float X){
-  if (shouldEnableBetweenX(startX, endX, X) == 1){
-    vec3 newPosition;
-    newPosition = rotate(position, vec3(-sign(position.z), 0, 0), position.z / -radius);
-    newPosition.y -= radius;
-    newPosition = rotate(newPosition, vec3(sign(rotation), 0, 0), (pow(abs(newPosition.x), 1.1) * rotation * sign(abs(newPosition.x))) / 512);
-    newPosition.y += radius;
-    
-    position = mix(position, newPosition, apply);
+    position.y += amount * sin(2 * pi * (position.x / 256));
   }
 }
